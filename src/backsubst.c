@@ -5,22 +5,20 @@
  * Zwraca 2 - błąd nieprawidłowych rozmiarów macierzy
  */
 int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
-	int ir=(mat->r);
-	int ic=(mat->c);
+	int ir=(mat->r)-1;
+	int ic=(mat->c)-1;
 	double rwn;
-	double rwnpb;
-	if(ic > ir)
+	double rwnpb=0.0;
+	if(ic != ir)
 	return 2;
-	for(ir ; ir > 0 ;ir--)
-	{	
-		for(int j = 1 ; j < (mat->c) ;j++)
-		{
-			rwnpb+=(mat->data[ir][ic+j]) * (x->data[ir+j][0]);	
+	for(ir=((mat->r)-1) ; ir >= 0 ;ir--){	
+		for(int j = ic+1; j < (mat->c) ;j++){
+			rwnpb += (mat->data[ir][j]) * (x->data[j][0]);	
 		}
-		rwn= b->data[ir][0] - rwnpb;
-			if((mat->data[ir][ic]-0)>=1e-6)
+		rwn=(b->data[ir][0])- rwnpb;
+			if(((mat->data[ir][ic])-0)<1e-4)
 			{	return 1;}
-		x->data[ir][0]=(rwn/(mat->data[ir][ic]));	
+		x->data[ir][0]=(rwn / (mat->data[ir][ic]));	
 		ic--;
 	}/**
 				 * Tutaj należy umieścić właściwą implemntację.

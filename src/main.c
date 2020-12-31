@@ -17,6 +17,10 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+
+	printToScreen(A);
+	printToScreen(b);
+
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
@@ -26,7 +30,7 @@ int main(int argc, char ** argv) {
 	} else {
 					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
-
+	printf("%d",res);
 	freeMatrix(A);
 	freeMatrix(b);
 
