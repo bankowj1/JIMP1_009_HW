@@ -19,7 +19,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 		rwn=(b->data[ir][0])- rwnpb;
 			if((fabs(mat->data[ir][ic])-0.0)<1e-6)
 			{	return 1;}
-		x->data[ir][0]=(rwn / (mat->data[ir][ic]));	
+		x->data[ir][0]=(rwn / (mat->data[ir][ic]));
 		ic--;
 	}/**
 				 * Tutaj należy umieścić właściwą implemntację.
