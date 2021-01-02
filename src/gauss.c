@@ -33,10 +33,7 @@ int eliminate(Matrix *mat, Matrix *b){
 		}
             double wsp = (mat->data[w][k])/(mat->data[k][k]);
             for(int j = k; j < mat->c; j++){
-                int x;
 		mat->data[w][j] -= (mat->data[k][j])*wsp;
-		if((fabs(mat->data[w][j])-0.0) < 1e-6)
-			x++;
 		}
             b->data[w][0] -= (b->data[k][0])*wsp;
         }
