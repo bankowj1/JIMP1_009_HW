@@ -1,4 +1,4 @@
-#include "gauss.h"
+#iinclude "gauss.h"
 #include <math.h>
 /**
  * Zwraca 0 - elimnacja zakonczona sukcesem
@@ -14,15 +14,15 @@ int eliminate(Matrix *mat, Matrix *b){
 			max = i;
 		}
 		if(max != k){
-			double tmp;
+			double temp;
 			for(int j = k; j < ((mat->c)-1);j++ ){
-			 	tmp = (mat->data[max][j]);
+			 	temp = (mat->data[max][j]);
 				(mat->data[max][j]) = (mat->data[k][j]);
-				(mat->data[k][j]) = tmp;
+				(mat->data[k][j]) = temp;
 			}
-				tmp = (b->data[max][0]);
+				temp = (b->data[max][0]);
 				(b->data[max][0])=(b->data[k][0]);
-				(b->data[k][0])=tmp;
+				(b->data[k][0])=temp;
 		}
 	
         for(int w = k+1; w < mat->r; w++){
