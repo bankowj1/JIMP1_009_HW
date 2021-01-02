@@ -7,7 +7,9 @@
 int eliminate(Matrix *mat, Matrix *b){
 	int x=0;
 	for(int k = 0; k < mat->c-1; k++){
-	
+
+
+
 		int max = k;
 		for(int i= k; i < ((mat->c)-1); i++){
 			if(mat->data[max][k] < mat->data[i][k] )
@@ -30,10 +32,15 @@ int eliminate(Matrix *mat, Matrix *b){
 			return x=1;
 		}
             double wsp = (mat->data[w][k])/(mat->data[k][k]);
-            for(int j = k; j < mat->c; j++)
-                mat->data[w][j] -= (mat->data[k][j])*wsp;
+            for(int j = k; j < mat->c; j++){
+                int x;
+		mat->data[w][j] -= (mat->data[k][j])*wsp;
+		if((fabs(mat->data[w][j])-0.0) < 1e-6)
+			x++;
+		}
             b->data[w][0] -= (b->data[k][0])*wsp;
         }
+
     }    
  
 		return x;
