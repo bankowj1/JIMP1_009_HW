@@ -14,7 +14,8 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 	return 2;
 	if(ir != ((b->r)-1))
 	return 2;
-	for(ir=((mat->r)-1) ; ir >= 0 ;ir--){	
+	for(ir=((mat->r)-1) ; ir >= 0 ;ir--){
+		rwnpb=0.0;
 		for(int j = ic+1; j < (mat->c) ;j++){
 			rwnpb += (mat->data[ir][j]) * (x->data[j][0]);	
 		}
