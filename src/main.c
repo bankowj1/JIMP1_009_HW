@@ -18,6 +18,11 @@ int main(int argc, char ** argv) {
 
 	res = eliminate(A,b);
 
+    if(res == 1){
+        fprintf(stderr,"Macierz A jest osobliwa, zatem uklad rownan nie jest oznaczony\n");
+        return 0;
+    }
+
 	printToScreen(A);
 	printToScreen(b);
 
