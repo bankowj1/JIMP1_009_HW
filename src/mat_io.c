@@ -11,19 +11,32 @@ Matrix * readFromFile(char * fname) {
 				int ir, ic;
 				FILE * fin =  fopen(fname,"r");
 				Matrix * mat = NULL;
+                int el = -2;
+                double x;
 
+                                
 				if (fin != NULL) {
+                    while(fscanf(fin,"%lf", &x) == 1)
+                        el++;
+                    rewind(fin);
+
 					fscanf(fin,"%d %d",&r,&c);
+
+                    if(el != r*c){
+                        fprintf(stderr,"Wymiary macierzy %d x %d nie sa zgodne z liczba elementow (%d) zapisanych w pliku: %s\n", r, c, el, fname);
+                    }
 					mat = createMatrix(r,c);
 					if (mat != NULL) {
 						for (ir = 0; ir < r; ir++) 
 							for (ic = 0; ic < c; ic++)
 								fscanf(fin, "%lf",&(mat->data[ir][ic]));
+                    
 					} else {
 								fprintf(stderr,"Wystąpił problem podczas tworzenia macierzy o rozmiarach %d x %d dla danych z pliku: %s\n", r, c, fname);
 					}
 
 					fclose(fin);
+
 				} else {
 								fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
 				}
