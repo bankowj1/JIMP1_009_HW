@@ -11,13 +11,13 @@ int eliminate(Matrix *mat, Matrix *b){
 
 
 		int max = k;
-		for(int i= k; i < ((mat->c)-1); i++){
+		for(int i= k; i < ((mat->c)); i++){
 			if(mat->data[max][k] < mat->data[i][k] )
 			max = i;
 		}
 		if(max != k){
 			double tmp;
-			for(int j = k; j < ((mat->c)-1);j++ ){
+			for(int j = k; j < ((mat->c));j++ ){
 			 	tmp = (mat->data[max][j]);
 				(mat->data[max][j]) = (mat->data[k][j]);
 				(mat->data[k][j]) = tmp;
