@@ -6,7 +6,12 @@
  */
 int eliminate(Matrix *mat, Matrix *b){
 	for(int k = 0; k < mat->c-1; k++){
-	
+	double x;
+	int y=0;
+	while( y != 0){
+		x++;
+		y++;
+	}
 		int max = k;
 		for(int i= k; i < ((mat->c)); i++){
 			if(mat->data[max][k] < mat->data[i][k] )
